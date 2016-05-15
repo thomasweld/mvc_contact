@@ -43,7 +43,12 @@ export class AppController {
   }
 
   contactTemplate(taskObj) {
-    return `<li>${taskObj.firstName} ${taskObj.lastName}</li>`;
+    return `<li>
+    <p>${taskObj.firstName} ${taskObj.lastName}</p>
+    <p>${taskObj.phoneNumber}</p>
+    <p>${taskObj.cityState}</p>
+    <img src="${taskObj.imageURL}" alt="contactImage" />
+    </li>`;
   }
 
 
