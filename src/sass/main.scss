@@ -1,0 +1,39 @@
+
+body {
+
+  background-color: #eee;
+  font-family: 'Roboto Condensed', sans-serif;
+
+  .container {
+
+    ul {
+      -webkit-padding-start: 0px;
+
+      li {
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 4px;
+        padding: 2em;
+        float: left;
+        margin: 1em 1em 1em 0;
+
+        .name {
+          font-size: 2em;
+          color: slateblue;
+        }
+
+        .phone {
+          font-weight: bold;
+        }
+        .addy{}
+        .contactPhoto{
+          max-width: 200px;
+          border-radius: 4px;
+          border: 1px solid #fff;
+        }
+      }
+    }
+
+  }
+}

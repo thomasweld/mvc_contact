@@ -45,13 +45,6 @@ export class AppController {
       phoneNumberFormField.val('');
       cityStateFormField.val('');
 
-
-
-      // let lastNameInput = this.form.find('#lastNameInput')[0].value;
-      // let imageURLInput = this.form.find('#imageURLInput')[0].value;
-      // let phoneNumberInput = this.form.find('#phoneNumberInput')[0].value;
-      // let cityStateInput = this.form.find('#cityStateInput')[0].value;
-
     });
   }
 
@@ -66,12 +59,14 @@ export class AppController {
   }
 
   contactTemplate(taskObj) {
-    return `<li>
-    <p>${taskObj.firstName} ${taskObj.lastName}</p>
-    <p>${taskObj.phoneNumber}</p>
-    <p>${taskObj.cityState}</p>
-    <img src="${taskObj.imageURL}" alt="contactImage" />
-    </li>`;
+    return `
+    <li>
+      <p class="name">${taskObj.firstName} ${taskObj.lastName}</p>
+      <p class="phone">${taskObj.phoneNumber}</p>
+      <p class="addy">${taskObj.cityState}</p>
+      <img class="contactPhoto" src="${taskObj.imageURL}" alt="contactImage" />
+    </li>
+    `;
   }
 
 
