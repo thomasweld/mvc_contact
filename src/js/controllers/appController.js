@@ -18,16 +18,39 @@ export class AppController {
   formSubmit() {
     this.form.on('submit', (event) => {
       event.preventDefault();
+      // get jquery objects for each form field
+      let firstNameFormField = this.form.find('#firstNameInput');
+      let lastNameFormField = this.form.find('#lastNameInput');
+      let imageURLFormField = this.form.find('#imageURLInput');
+      let phoneNumberFormField = this.form.find('#phoneNumberInput');
+      let cityStateFormField = this.form.find('#cityStateInput');
+
       // assign value of form elements to variables to build singleContact obj
-      let firstNameInput = this.form.find('#firstNameInput')[0].value;
-      let lastNameInput = this.form.find('#lastNameInput')[0].value;
-      let imageURLInput = this.form.find('#imageURLInput')[0].value;
-      let phoneNumberInput = this.form.find('#phoneNumberInput')[0].value;
-      let cityStateInput = this.form.find('#cityStateInput')[0].value;
+      let firstNameInput = firstNameFormField[0].value;
+      let lastNameInput = lastNameFormField[0].value;
+      let imageURLInput = imageURLFormField[0].value;
+      let phoneNumberInput = phoneNumberFormField[0].value;
+      let cityStateInput = cityStateFormField[0].value;
+
       // new contact equals inance / proto of SingleContact class
       let newContact = new SingleContact(firstNameInput, lastNameInput, imageURLInput, phoneNumberInput, cityStateInput);
+
       // run addContactToCollection function and pass in new instance of SingleContact obj
       this.addContactToCollection( newContact );
+
+      // clear out form fields after submission
+      firstNameFormField.val('');
+      lastNameFormField.val('');
+      imageURLFormField.val('');
+      phoneNumberFormField.val('');
+      cityStateFormField.val('');
+
+
+
+      // let lastNameInput = this.form.find('#lastNameInput')[0].value;
+      // let imageURLInput = this.form.find('#imageURLInput')[0].value;
+      // let phoneNumberInput = this.form.find('#phoneNumberInput')[0].value;
+      // let cityStateInput = this.form.find('#cityStateInput')[0].value;
 
     });
   }
