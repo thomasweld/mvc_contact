@@ -29,6 +29,12 @@ export class AppController {
       let firstNameInput = firstNameFormField[0].value;
       let lastNameInput = lastNameFormField[0].value;
       let imageURLInput = imageURLFormField[0].value;
+      
+      // use placeholder if no image url is entered
+      if (imageURLInput === '') {
+        imageURLInput = 'http://placehold.it/200x200';
+      }
+
       let phoneNumberInput = phoneNumberFormField[0].value;
       let cityStateInput = cityStateFormField[0].value;
 
