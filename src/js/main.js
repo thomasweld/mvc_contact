@@ -18,12 +18,3 @@ let app = new AppController(contactForm, contactListArea, myList);
 
 // starts app
 app.init();
-
-
-function deleteContact(){
-
-    $( '.deleteButton' ).click(function() {
-      alert( "Handler for .click() called." );
-    });
-
-  }

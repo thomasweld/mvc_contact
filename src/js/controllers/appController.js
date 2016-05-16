@@ -76,4 +76,13 @@ export class AppController {
     `;
   }
 
+
+  deleteContact(){
+
+      $( '.deleteButton' ).click(function() {
+        alert( "Handler for .click() called." );
+      });
+
+    }
+
 }
