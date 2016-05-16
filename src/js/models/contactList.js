@@ -1,9 +1,9 @@
-
 export class ContactList {
 
-  constructor(title) {
-    this.title = title;
+  constructor(listTitle) {
+    this.title = listTitle;
     this.contacts = [];
+
   }
 
 }

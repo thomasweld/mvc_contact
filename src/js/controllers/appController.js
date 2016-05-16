@@ -6,74 +6,74 @@ import { SingleContact } from '../models/singleContact';
 export class AppController {
 
   constructor(contactForm, contactListArea, myList) {
-    this.form = contactForm;
+    this.contactForm = contactForm;
     this.contactListArea = contactListArea;
-    this.myList = myList;
+    this.contactList = myList
   }
 
   init() {
     this.formSubmit();
+    this.deleteContact();
   }
 
   formSubmit() {
-    this.form.on('submit', (event) => {
+    this.contactForm.on('submit', (event) => {
       event.preventDefault();
-      // get jquery objects for each form field
-      let firstNameFormField = this.form.find('#firstNameInput');
-      let lastNameFormField = this.form.find('#lastNameInput');
-      let imageURLFormField = this.form.find('#imageURLInput');
-      let phoneNumberFormField = this.form.find('#phoneNumberInput');
-      let cityStateFormField = this.form.find('#cityStateInput');
 
-      // assign value of form elements to variables to build singleContact obj
-      let firstNameInput = firstNameFormField[0].value;
-      let lastNameInput = lastNameFormField[0].value;
-      let imageURLInput = imageURLFormField[0].value;
-      
+      // use form data to create a single contact
+
+      // find the form
+      let form = this.contactForm;
+
+      // assign form field values to variables
+      let firstName = form.find('#firstNameInput').val();
+      let lastName = form.find('#lastNameInput').val();
+      let imageURL = form.find('#imageURLInput').val();
+      let phoneNumber = form.find('#phoneNumberInput').val();
+      let cityState = form.find('#cityStateInput').val();
+
       // use placeholder if no image url is entered
-      if (imageURLInput === '') {
-        imageURLInput = 'http://placehold.it/200x200';
+      if (imageURL === '') {
+        imageURL = 'http://placehold.it/200x200';
       }
 
-      let phoneNumberInput = phoneNumberFormField[0].value;
-      let cityStateInput = cityStateFormField[0].value;
-
-      // new contact equals inance / proto of SingleContact class
-      let newContact = new SingleContact(firstNameInput, lastNameInput, imageURLInput, phoneNumberInput, cityStateInput);
+      // new contact equals instance of SingleContact class
+      var newContact = new SingleContact(firstName, lastName, imageURL, phoneNumber, cityState);
 
       // run addContactToCollection function and pass in new instance of SingleContact obj
       this.addContactToCollection( newContact );
 
-      // clear out form fields after submission
-      firstNameFormField.val('');
-      lastNameFormField.val('');
-      imageURLFormField.val('');
-      phoneNumberFormField.val('');
-      cityStateFormField.val('');
+      // // clear out form fields after submission
+      form.find('#firstNameInput').val('');
+      form.find('#lastNameInput').val('');
+      form.find('#imageURLInput').val('');
+      form.find('#phoneNumberInput').val('');
+      form.find('#cityStateInput').val('');
 
     });
   }
 
   addContactToCollection( newContact ) {
-    this.myList.contacts.push(newContact); // Push to my contacts array
+    this.contactList.contacts.push(newContact); // Push to my contacts array
     this.addToContactListArea(newContact); // call an update to the view
   }
 
-  addToContactListArea(taskObj) {
-    let contactHTML = this.contactTemplate(taskObj);
+  addToContactListArea(newContact) {
+    let contactHTML = this.contactTemplate(newContact);
     this.contactListArea.prepend(contactHTML);
   }
 
-  contactTemplate(taskObj) {
+  contactTemplate(newContact) {
     return `
     <li>
-      <p class="name">${taskObj.firstName} ${taskObj.lastName}</p>
-      <p class="phone">${taskObj.phoneNumber}</p>
-      <p class="addy">${taskObj.cityState}</p>
-      <img class="contactPhoto" src="${taskObj.imageURL}" alt="contactImage" />
+      <p class="name">${newContact.firstName} ${newContact.lastName}</p>
+      <p class="phone">${newContact.phoneNumber}</p>
+      <p class="addy">${newContact.cityState}</p>
+      <img class="contactPhoto" src="${newContact.imageURL}" alt="contactImage" />
+      <p>&nbsp;</p>
+      <button class="deleteButton">DELETE</button>
     </li>
     `;
   }
-
 
 }
