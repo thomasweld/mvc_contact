@@ -1,6 +1,6 @@
 # Build an MVC style app without an MVC specific framework or library.
 
-# surge link - http://tiy-thomas-mvc_contact.surge.sh
+# surge link - http://tiy-thomas-mvc_contact.surge.sh/
 
 ## Learning Objectives
 
