@@ -13,7 +13,7 @@ export class AppController {
 
   init() {
     this.formSubmit();
-    this.deleteContact();
+    this.eventHandlerDeleteContact();
   }
 
   formSubmit() {
@@ -76,13 +76,21 @@ export class AppController {
     `;
   }
 
+  eventHandlerDeleteContact(){
+    console.log('eventhandler being called');
+    $( '.contactListArea' ).on('click', '.deleteButton', this.deleteContact);
+  }
 
-  deleteContact(){
+  deleteContact() {
+    $(this).parent('li').remove();
+  };
 
-      $( '.deleteButton' ).click(function() {
-        alert( "Handler for .click() called." );
-      });
-
-    }
+  // eventHandlerDeleteContact(){
+  //
+  //     $( '.deleteButton' ).click(function deleteContact() {
+  //       alert( "Handler for .click() called." );
+  //     });
+  //
+  //   }
 
 }
