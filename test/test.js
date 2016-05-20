@@ -2,7 +2,9 @@
 import chai from 'chai';
 
 // Import Any Files to Test
-import '../src/js/main';
+import { AppController } from '../src/js/controllers/appController';
+import { ContactList } from '../src/js/models/contactList';
+import { SingleContact } from '../src/js/models/singleContact';
 
 // Set Chai Constants
 const expect = chai.expect;
